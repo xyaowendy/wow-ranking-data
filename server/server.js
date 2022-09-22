@@ -17,6 +17,8 @@ async function main() {
 
 const connection = mongoose.connection;
 
+let players = []
+
 connection.on('error', console.error.bind(console, 'connection error:'));
 connection.once('open', async function () {
 
@@ -25,7 +27,7 @@ connection.once('open', async function () {
         if(err) {
             console.log(err);
         } else {
-            console.log(data)
+            players = data;
         }
     });
 });
@@ -36,13 +38,13 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
 app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
+    res.json(players);
 });
 
 // All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+// });
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
