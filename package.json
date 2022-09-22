@@ -1,0 +1,19 @@
+{
+  "name": "wow-ranking-data",
+  "version": "1.0.0",
+  "description": "A simple webpage to show wow ranking data for the current season (Chinese server)",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "build": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": "16.16.0"
+  },
+  "author": "Wendy Jiang",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
